@@ -1,0 +1,12 @@
+.cursor {
+	cursor: pointer;
+}
+
+.btn-grey {
+	background-color: rgb(214, 214, 214);
+}
+
+.actions {
+	display: flex;
+	justify-content: space-evenly;
+}
