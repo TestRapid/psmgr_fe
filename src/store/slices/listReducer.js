@@ -74,6 +74,14 @@ export const psmgr = createSlice({
 		s.addCase(deleteItem.fulfilled, (state, action) => {
 			state.list = state.list.filter((li) => li.id !== action.payload.id);
 		});
+		s.addCase(editItem.fulfilled, (state, action) => {
+			state.list = state.list.map((f) => {
+				if (f.id === action.payload.id) {
+					return action.payload;
+				}
+				return f;
+			});
+		});
 	}
 });
 

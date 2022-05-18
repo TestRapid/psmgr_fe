@@ -17,6 +17,7 @@ const lt = (val) => {
 const EditPs = ({ pop }) => {
 	const dispatch = useDispatch();
 	const [editable, setEditable] = useState(false);
+	const [visible_eye, setVisible_eye] = useState(false);
 	const [ps, setPs] = useState(pass_mgr(pop.passwords));
 	const [psedit, setPsedit] = useState({ password: "" });
 
@@ -38,6 +39,10 @@ const EditPs = ({ pop }) => {
 
 	const toggle = () => {
 		setEditable((e) => !e);
+	};
+
+	const toggle_eye = () => {
+		setVisible_eye((e) => !e);
 	};
 
 	const ps_clear = () => {
@@ -182,13 +187,30 @@ const EditPs = ({ pop }) => {
 							</label>
 							<div className="input-group">
 								<input
-									type="text"
+									type={visible_eye ? "text" : "password"}
 									id={`det_password_${pop.id}`}
 									name="det_password"
 									className="form-control rounded"
 									readOnly={!editable}
 									ref={inputPassword}
 								/>
+								{visible_eye ? (
+									<button
+										type="button"
+										onClick={toggle_eye}
+										className="btn rounded btn-grey"
+									>
+										<i className="bi bi-eye-slash-fill"></i>
+									</button>
+								) : (
+									<button
+										type="button"
+										onClick={toggle_eye}
+										className="btn rounded btn-grey"
+									>
+										<i className="bi bi-eye"></i>
+									</button>
+								)}
 								<button
 									className="btn btn-outline-secondary rounded"
 									type="button"
